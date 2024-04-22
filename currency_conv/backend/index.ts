@@ -2,6 +2,9 @@ import express from "express";
 import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 import axios from "axios";
+import cors from "cors";
+
+//! Config
 dotenv.config();
 const app = express();
 
@@ -16,6 +19,12 @@ const limiter = rateLimit({
 //! Middleware
 app.use(express.json());
 app.use(limiter);
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 //! Routes
 app.post("/api/convert", async (req, res) => {
