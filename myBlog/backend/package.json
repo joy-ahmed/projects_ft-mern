@@ -1,0 +1,27 @@
+{
+  "name": "myblog-backend",
+  "module": "index.ts",
+  "type": "module",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Joy Ahmed",
+  "scripts": {
+    "start": "bun --watch index.ts",
+    "build": "bun build index.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2"
+  }
+}
