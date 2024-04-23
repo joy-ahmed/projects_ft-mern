@@ -1,8 +1,31 @@
 import mongoose from "mongoose";
 
+export interface IPost {
+  title: string;
+  slug: string;
+  description: string;
+  image: string;
+  author: string;
+  nextEarningDate: Date;
+  thisMonthEarnings: number;
+  totalEarnings: number;
+  category: string;
+  viewCount: number;
+  comments: string[];
+  likes: string[];
+  dislikes: string[];
+  viewers: string[];
+  isBlocked: boolean;
+}
+
 const postSchema = new mongoose.Schema(
   {
     title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    slug: {
       type: String,
       required: true,
       trim: true,
@@ -18,7 +41,7 @@ const postSchema = new mongoose.Schema(
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      // required: true,
     },
     nextEarningDate: {
       type: Date,
@@ -36,7 +59,7 @@ const postSchema = new mongoose.Schema(
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
-      required: true,
+      // required: true,
     },
     viewCount: {
       type: Number,
