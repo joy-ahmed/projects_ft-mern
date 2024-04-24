@@ -9,6 +9,12 @@ export const getPosts = async (req: Request, res: Response): Promise<void> => {
     console.log(error);
     res.status(500).json({ message: "Server Error" });
   }
+  //serach functionality
+  // if(req.query.search){
+  //   const filterPosts = await Post.find({
+  //     title: { $regex: req.query.search, $options: "i" },
+  //   })
+  // }
 };
 
 export const getSinglePost = async (
