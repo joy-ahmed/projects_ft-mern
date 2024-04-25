@@ -10,8 +10,13 @@ const SinglePost = () => {
   });
   return (
     <div>
-      {data && <h1>{data.title}</h1>}
-      {data && <p>{data.description}</p>}
+      {data && <h1 className="text-3xl font-semibold">{data.title}</h1>}
+      {data && (
+        <div
+          className="ql-container"
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        />
+      )}
     </div>
   );
 };

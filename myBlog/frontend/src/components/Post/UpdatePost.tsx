@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import ReactQuill from "react-quill";
 
 const UpdatePost = () => {
   const { id } = useParams();
@@ -70,10 +71,10 @@ const UpdatePost = () => {
           )}
         </div>
         <div className="mb-3">
-          <textarea
-            placeholder="description"
-            className="w-full h-24 p-2 border rounded-md"
-            {...formik.getFieldProps("description")}
+          <ReactQuill
+            theme="snow"
+            value={formik.values.description}
+            onChange={(value) => formik.setFieldValue("description", value)}
           />
           {/* Show error message */}
           {formik.touched.description && formik.errors.description && (
