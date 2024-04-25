@@ -1,6 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import { createPostAPI } from "../../apiService/posts/api";
 
 const CreatePosts = () => {
@@ -52,10 +54,10 @@ const CreatePosts = () => {
           ) : null}
         </div>
         <div className="mb-3">
-          <textarea
-            placeholder="description"
-            className="w-full h-24 p-2 border rounded-md"
-            {...formik.getFieldProps("description")}
+          <ReactQuill
+            theme="snow"
+            value={formik.values.description}
+            onChange={(value) => formik.setFieldValue("description", value)}
           />
           {formik.touched.description && formik.errors.description ? (
             <p className="text-red-400">{formik.errors.description}</p>
