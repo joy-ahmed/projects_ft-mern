@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar/Navbar";
 import SinglePost from "./components/Post/SinglePost";
 import UpdatePost from "./components/Post/UpdatePost";
 import { Toaster } from "react-hot-toast";
+import RegistrationPage from "./pages/RegistrationPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/create-post" element={<CreatePosts />} />
         <Route path="/post/:id" element={<SinglePost />} />
         <Route path="/update-post/:id" element={<UpdatePost />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
