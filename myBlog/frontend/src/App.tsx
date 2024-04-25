@@ -6,11 +6,13 @@ import AllPostList from "./components/Post/AllPostList";
 import Navbar from "./components/Navbar/Navbar";
 import SinglePost from "./components/Post/SinglePost";
 import UpdatePost from "./components/Post/UpdatePost";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <Toaster />
       <Routes>
         <Route path="/" element={<AllPostList />} />
         <Route path="/create-post" element={<CreatePosts />} />

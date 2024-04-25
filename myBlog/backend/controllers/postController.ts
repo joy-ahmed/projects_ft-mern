@@ -35,8 +35,14 @@ export const createPost = async (
   res: Response
 ): Promise<void> => {
   try {
-    const newPost = new Post(req.body);
-    const savedPost = await newPost.save();
+    console.log(req.file);
+    const { title, description } = req.body;
+    const newPost: Partial<IPost> = {
+      title,
+      description,
+      image: req.file,
+    };
+    const savedPost = await Post.create(newPost);
     res.status(200).json(savedPost);
   } catch (error) {
     console.log(error);
