@@ -32,27 +32,42 @@ const CreatePosts = () => {
     },
   });
 
+  //get loading state
+  const { isPending } = createPostMutation;
+
   return (
-    <div>
-      <h1>Create post</h1>
+    <div className="max-w-4xl mx-auto bg-slate-50 p-5 rounded-md shadow mt-5">
+      <h1 className="text-2xl text-center mb-4">Create post</h1>
       <form onSubmit={formik.handleSubmit}>
-        <input
-          type="text"
-          placeholder="title"
-          {...formik.getFieldProps("title")}
-        />
-        {/* show error message */}
-        {formik.touched.title && formik.errors.title ? (
-          <p className="text-red-400">{formik.errors.title}</p>
-        ) : null}
-        <textarea
-          placeholder="description"
-          {...formik.getFieldProps("description")}
-        />
-        {formik.touched.description && formik.errors.description ? (
-          <p className="text-red-400">{formik.errors.description}</p>
-        ) : null}
-        <button type="submit">Submit</button>
+        <div className="mb-3">
+          <input
+            type="text"
+            placeholder="title"
+            className="w-full p-2 border rounded-md"
+            {...formik.getFieldProps("title")}
+          />
+          {/* show error message */}
+          {formik.touched.title && formik.errors.title ? (
+            <p className="text-red-400">{formik.errors.title}</p>
+          ) : null}
+        </div>
+        <div className="mb-3">
+          <textarea
+            placeholder="description"
+            className="w-full h-24 p-2 border rounded-md"
+            {...formik.getFieldProps("description")}
+          />
+          {formik.touched.description && formik.errors.description ? (
+            <p className="text-red-400">{formik.errors.description}</p>
+          ) : null}
+        </div>
+        <button
+          disabled={isPending}
+          className="w-full p-2 bg-slate-800 text-white rounded disabled:bg-slate-500"
+          type="submit"
+        >
+          {isPending ? "Creating Post..." : "Create Post"}
+        </button>
       </form>
     </div>
   );
