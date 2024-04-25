@@ -8,11 +8,12 @@ const AllPostList = () => {
     queryFn: getAllPostsAPI,
   });
 
+  if (isError) return <p>Error: {error.message}</p>;
+  if (isLoading) return <p>Loading...</p>;
+  if (data.length <= 0) return <p>No posts found</p>;
+
   return (
     <div>
-      {isLoading && <p>Loading...</p>}
-      {isError && <p>Error: {error.message}</p>}
-      {error && <p>Error: {error.message}</p>}
       <div className="max-w-4xl mx-auto">
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-expect-error */}
